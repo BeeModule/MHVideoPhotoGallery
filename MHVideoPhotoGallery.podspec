@@ -2,14 +2,14 @@ Pod::Spec.new do |s|
   s.name         = 'MHVideoPhotoGallery'
   s.version      = '2.2.0'
   s.license      = 'MIT'
-  s.homepage     = 'https://github.com/mariohahn/MHVideoPhotoGallery'
+  s.homepage     = 'https://github.com/BeeModule/MHVideoPhotoGallery'
   s.author = {
     'Mario Hahn' => 'mario_hahn@me.com'
   }
   s.summary      = 'Gallery for iOS 9 Devices.'
   s.platform     =  :ios
   s.source = {
-    :git => 'https://github.com/mariohahn/MHVideoPhotoGallery.git',
+    :git => 'https://github.com/BeeModule/MHVideoPhotoGallery.git',
     :tag => 'v2.2.0'
   }
 

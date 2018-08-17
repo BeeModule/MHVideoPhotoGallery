@@ -47,8 +47,28 @@
     self.collectionView.dataSource = self;
     self.collectionView.alwaysBounceVertical = YES;
     self.collectionView.delegate = self;
-    self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleTopMargin;
+//    self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:self.collectionView];
+    
+    self.collectionView.translatesAutoresizingMaskIntoConstraints = false;
+    NSArray *attributes = @[@(NSLayoutAttributeTop), @(NSLayoutAttributeLeft),
+                            @(NSLayoutAttributeBottom), @(NSLayoutAttributeRight)];
+    [attributes enumerateObjectsUsingBlock:^(NSNumber *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLayoutAttribute attribute = (NSLayoutAttribute)obj.integerValue;
+        CGFloat constant = 0;
+        if (attribute == NSLayoutAttributeTop) {
+            constant = 64;
+        }
+        NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self.collectionView
+                                                                      attribute:attribute
+                                                                      relatedBy:NSLayoutRelationEqual
+                                                                         toItem:self.view
+                                                                      attribute:attribute
+                                                                     multiplier:1
+                                                                       constant:constant];
+        [self.view addConstraint:constraint];
+    }];
+    
     [self.collectionView reloadData];
     
 #pragma clang diagnostic push
