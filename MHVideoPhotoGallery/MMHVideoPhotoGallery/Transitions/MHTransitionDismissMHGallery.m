@@ -186,7 +186,12 @@
     
     if (imageViewerCurrent.isPlayingVideo && imageViewerCurrent.moviePlayer) {
         self.moviePlayer = imageViewerCurrent.moviePlayer;
-        [self.moviePlayer.view setFrame:AVMakeRectWithAspectRatioInsideRect(imageViewerCurrent.moviePlayer.naturalSize,fromViewController.view.bounds)];
+        CGSize size = imageViewerCurrent.moviePlayer.naturalSize;
+        if (size.width == 0 || size.height == 0) {
+            size = CGSizeMake(100, 100);
+        }
+        [self.moviePlayer.view setFrame:AVMakeRectWithAspectRatioInsideRect(size,fromViewController.view.bounds)];
+       // [self.moviePlayer.view setFrame:AVMakeRectWithAspectRatioInsideRect(imageViewerCurrent.moviePlayer.naturalSize,fromViewController.view.bounds)];
         
         self.startFrame = self.moviePlayer.view.frame;
         
